@@ -1,0 +1,23 @@
+{% extends "base_j.html" %}
+{% load i18n compress %}
+{% block title %}{% trans "Plenary sessions" %}{% endblock %}
+
+{% block content %}
+  <div id="calendar">
+    <div class="header">
+      <h2>Helmikuu 2011</h2>
+    </div>
+    {% for week in weeks %}
+    <div class="week">
+      {% for day in week %}
+      <div class="day {{ day.weekdayclass }}{% if day.today %} today{% endif %}{% if day.offmonth %} offmonth{% endif %}">
+        <span class="weekday">{{ day.weekday|capfirst }}</span>
+        <span class="dayofmonth">{{ day.day }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}
+
