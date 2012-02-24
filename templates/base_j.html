@@ -41,11 +41,11 @@
 		</div>
 		<div id="header">
 			<div id="logo">
-				<h1><a href="#">KAMU</a></h1>
+				<h1><a href="/new/">KAMU</a></h1>
 			</div>
 			<div id="navbar">
 				<ul class="unstyled">
-					<li><a href="#">Täysistunnot</a></li>
+					<li{% if active_page == "session" %} class="active"{% endif %}><a href="/new/session/">Täysistunnot</a></li>
 					<li class="sep">/</li>
 					<li><a href="#">Puolueet</a></li>
 

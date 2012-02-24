@@ -94,6 +94,10 @@
 	li {
 		float: left;
 		margin-right: 10px;
+
+		&.active a {
+			color: @primary;
+		}
 	}
 
 	a {
@@ -103,10 +107,6 @@
 		color: @black;
 
 		&:hover {
-			color: @primary;
-		}
-
-		&.extra {
 			color: @primary;
 		}
 	}
