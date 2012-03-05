@@ -11,6 +11,38 @@ from parliament.models import *
 from social.models import Update
 from httpstatus import Http400
 
+import calendar
+import datetime
+calendar.setfirstweekday(calendar.MONDAY)
+
+weekdayclasses = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+weekday = map(_, ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+
+def _date_to_info(date):
+  info = {}
+  info['date'] = date
+  info['weekday'] = weekday[date.weekday()]
+  info['weekdayclass'] = weekdayclasses[date.weekday()]
+  info['day'] = date.day
+  info['today'] = date == datetime.date.today()
+  info['offmonth'] = date.month != datetime.date.today().month
+
+  return info
+
+def list_sessions(request):
+    args = {}
+
+    year = 2012
+    month = 2
+    c = calendar.Calendar()
+    days = c.monthdatescalendar(year, month)
+    args['weeks'] = map(lambda w: map(_date_to_info, w), days)
+
+    args['active_page'] = "session"
+
+    return render_to_response('calendar.html', args,
+                              context_instance=RequestContext(request))
+
 def show_item(request, plsess, item_nr, subitem_nr=None):
     query = Q(plsess__url_name=plsess) & Q(number=item_nr)
     if subitem_nr is None:

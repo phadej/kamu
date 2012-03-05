@@ -363,3 +363,72 @@
         	margin-left: 100px;
         }
 }
+
+// calendar
+
+#calendar {
+	width: 120px * 6;
+
+	.week {
+		height: 115px;
+	}
+
+	.day {
+		margin-right: 5px;
+		margin-bottom: 5px;
+
+		width: 115px;
+		height: 115px;
+		float: left;
+
+		overflow: hidden;
+		background: @lightgrey;
+
+		&:hover {
+			background: @white;
+		}
+	}
+
+	.today {
+		background: fade(@primary, 30%);
+
+		.dayofmonth {
+			color: @violet;
+		}
+	}
+
+	.offmonth {
+		.dayofmonth {
+			color: @grey;
+		}
+	}
+
+	.weekday {
+		display: block;
+
+		font-size: 10px;
+		line-height: 17px;
+		margin-left: 5px;
+
+		font-style: italic;
+		font-weight: normal;
+	}
+
+	.dayofmonth {
+		display: block;
+
+		font-size: 45px;
+		line-height: 50px;
+		font-weight: lighter;
+		margin-left: 5px;
+	}
+
+	.sat, .sun {
+		height: 55px;
+
+		.dayofmonth {
+			font-size: 24px;
+			line-height: 30px;
+		}
+	}
+}
